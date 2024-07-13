@@ -1,6 +1,6 @@
-const SHA256 = require('crypto-js/sha256');
-const ENUMS = require('../enums/enums');
-const LANG = require('../lang');
+import SHA256 from 'crypto-js/sha256.js';
+import ENUMS from '../enums/enums.mjs';
+import LANG from '../lang/index.mjs';
 
 class Block {
     constructor(data) {
@@ -96,4 +96,4 @@ class Block {
     }
 }
 
-module.exports = Block;
+export default Block;

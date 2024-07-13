@@ -10,5 +10,8 @@
   "description": "",
   "devDependencies": {
     "crypto-js": "^4.2.0"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
   }
 }

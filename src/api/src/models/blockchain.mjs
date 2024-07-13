@@ -1,6 +1,6 @@
-const Block = require('./block');
-const ENUMS = require('../enums/enums');
-const LANG = require('../lang');
+import Block from './block.mjs';
+import ENUMS from '../enums/enums.mjs';
+import LANG from '../lang/index.mjs';
 
 class Blockchain {
     constructor() {
@@ -119,4 +119,4 @@ class Blockchain {
     }
 }
 
-module.exports = Blockchain;
+export default Blockchain;
