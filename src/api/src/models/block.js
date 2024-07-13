@@ -1,27 +1,60 @@
 const SHA256 = require('crypto-js/sha256');
-const hex2ascii = require('hex2ascii');
 const ENUMS = require('../enums/enums');
 const LANG = require('../lang');
 
 class Block {
     constructor(data) {
-        this.hash = null;
+        this.hash = '';
         this.height = 0;
-        this.time = 0;
         this.type = data.type;
-        this.body = Buffer.from(JSON.stringify(data.body).toString('hex'));
+        this.time = '';
+        this.nonce = 0;
+        this.body = Buffer.from(JSON.stringify(data.body).toString());
         this.prevBlockHash = '';
     }
 
-    validate() {
+    /**
+     * Static Async Class Methods
+     */
+
+    static async mine(prevHash, data) {
+        let hash = '';
+        let time = '';
+        let nonce = 0;
+
+        do {
+            time = new Date().getTime().toString();
+            nonce += 1;
+            hash = SHA256(prevHash + time + nonce + data.body).toString();
+        } while (
+            hash.substring(0, ENUMS.block.mine.difficulty.value) !== '0'.repeat(ENUMS.block.mine.difficulty.value)
+        );
+
+        const block = new this({ type: data.type, body: data.body });
+
+        block.hash = hash;
+        block.time = time;
+        block.nonce = nonce;
+        block.prevBlockHash = prevHash;
+
+        return block;
+    }
+
+    /**
+     * Async Class Methods
+     */
+
+    async validate(prevHash) {
         const self = this;
 
-        return new Promise((resolve) => {
+        return new Promise(async (resolve) => {
             let currentHash = self.hash;
 
-            self.hash = SHA256(JSON.stringify({ ...self, hash: null })).toString();
+            const bodyData = await this.getBodyData();
 
-            if (currentHash !== self.hash) {
+            const comprobationHash = SHA256(prevHash + self.time + self.nonce + bodyData).toString();
+
+            if (currentHash !== comprobationHash) {
                 resolve(false);
             } else {
                 resolve(true);
@@ -29,30 +62,34 @@ class Block {
         });
     }
 
-    getBlockData() {
+    async getBodyData() {
         const self = this;
 
-        return new Promise((resolve, reject) => {
-            if (self.type === ENUMS.blockType.genesys) {
-                reject(new Error(LANG.english.alerts.genesysBlock));
-            } else {
+        return new Promise((resolve) => {
+            try {
                 const encodedData = self.body;
-                const decodedData = hex2ascii(encodedData);
-                const dataObject = JSON.parse(decodedData);
-
-                resolve(dataObject);
+                const decodedData = encodedData.toString();
+                const bodyData = JSON.parse(decodedData);
+                resolve(bodyData);
+            } catch (error) {
+                throw new Error(`${LANG.english.errors.errorOnGetBlockData}, Hash: ${self.hash}, Error: ${error}`);
             }
         });
     }
 
-    toString() {
-        const { hash, height, time, type, body, prevBlockHash } = this;
+    /**
+     * Class Methods
+     */
 
-        return `Block -
+    toString() {
+        const { hash, height, type, time, nonce, body, prevBlockHash } = this;
+
+        return `🗿 Block -
             hash: ${hash}
             height: ${height}
-            time: ${time}
             type: ${type}
+            time: ${time}
+            nonce: ${nonce}
             body: ${body}
             prevBlockHash: ${prevBlockHash}
             --------------------------------`;

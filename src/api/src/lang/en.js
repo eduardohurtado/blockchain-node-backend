@@ -1,15 +1,24 @@
 const english = {
-    block: {
+    chain: {
         props: {
-            height: 'height'
+            height: 'Chain height'
         }
     },
-    alerts: {
-        genesysBlock: 'This is the genesys block'
+    block: {
+        props: {
+            height: 'Block height'
+        }
+    },
+    process: {
+        finalizedPrint: 'Print finalized'
     },
     errors: {
         invalidChain: 'The chain is not valid',
-        invalidBlock: 'The block is not valid'
+        invalidBlock: 'The block is not valid',
+        errorOnGetBlockData: 'Cannot get the block data',
+        chainInitialized: 'The chain is already initialized',
+        chainIsNotInitialized: 'The chain has to be initialized before mine a block',
+        genesysBlockAlreadyCreated: 'The genesys block type is unique, and is already created'
     }
 };
 
