@@ -1,4 +1,4 @@
-# Blockchain Full Stack App React Node
+# Blockchain Full Stack App React + Node
 
 This project was created as an incursion to the Blockchain world and technologies.
 
@@ -6,7 +6,11 @@ This project was created as an incursion to the Blockchain world and technologie
 
 ## App requirements
 
-You need to have installed [Node Js](https://nodejs.org/en/) on your system to run the development server.
+You need to have installed [Node Js](https://nodejs.org/en/) on your system to run the development server, the minimun supported version is the `V18.20.4`.
+
+## Install the project
+
+Run `npm install` to download all the app dependencies.
 
 ## Available Scripts
 
@@ -15,7 +19,7 @@ In the project directory, you can run:
 ### `npm start`
 
 Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Open [http://localhost:8080](http://localhost:8080) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.

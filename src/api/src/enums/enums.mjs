@@ -15,4 +15,4 @@ const ENUMS = Object.freeze({
     }
 });
 
-module.exports = ENUMS;
+export default ENUMS;

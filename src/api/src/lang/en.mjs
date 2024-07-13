@@ -22,4 +22,4 @@ const english = {
     }
 };
 
-module.exports = english;
+export default english;

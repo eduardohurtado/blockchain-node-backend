@@ -1,6 +1,9 @@
-const Blockchain = require('./src/models/blockchain');
-const ENUMS = require('./src/enums/enums');
+import Blockchain from '../models/blockchain.mjs';
+import ENUMS from '../enums/enums.mjs';
 
+/**
+ * Use the function below to test the Blockchain functionality
+ */
 async function run() {
     const blockchain = new Blockchain();
 
