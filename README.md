@@ -8,6 +8,8 @@ This project was created as an incursion to the Blockchain world and technologie
 
 You need to have installed [Node Js](https://nodejs.org/en/) on your system to run the development server, the minimun supported version is the `V18.20.4`.
 
+For a better debuggin is recommended to have installed [Nodemon](https://www.npmjs.com/package/nodemon) and launch the local Node server in the directory "src/api" with the command `nodemon index.mjs`.
+
 ## Install the project
 
 Run `npm install` to download all the app dependencies.

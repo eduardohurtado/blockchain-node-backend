@@ -3,9 +3,9 @@ import ENUMS from '../enums/enums.mjs';
 import LANG from '../lang/index.mjs';
 
 class Blockchain {
-    constructor() {
-        this.chain = [];
-        this.height = -1;
+    constructor(data) {
+        this.chain = data?.chain || [];
+        this.height = data?.height || -1;
     }
 
     /**
@@ -105,8 +105,37 @@ class Blockchain {
     }
 
     /**
+     * Static Class methods
+     */
+
+    static rebuild(data) {
+        const blockchain = new this(data);
+        const rebuildedChain = [];
+
+        for (const block of blockchain.chain) {
+            const rebuildedBlock = Block.rebuildBlock(block);
+            rebuildedChain.push(rebuildedBlock);
+        }
+
+        blockchain.chain = rebuildedChain;
+
+        return blockchain;
+    }
+
+    /**
      * Class methods
      */
+
+    decryptBlocksBody() {
+        const decryptedBlocks = [];
+
+        for (const block of this.chain) {
+            block.decryptBody();
+            decryptedBlocks.push(block);
+        }
+
+        this.chain = decryptedBlocks;
+    }
 
     printChain() {
         const self = this;
