@@ -4,13 +4,23 @@ import LANG from '../lang/index.mjs';
 
 class Block {
     constructor(data) {
-        this.hash = '';
-        this.height = 0;
-        this.type = data.type;
-        this.time = '';
-        this.nonce = 0;
-        this.body = Buffer.from(JSON.stringify(data.body).toString());
-        this.prevBlockHash = '';
+        if (data?.isRebuild) {
+            this.hash = data.blockData.hash;
+            this.height = data.blockData.height;
+            this.type = data.blockData.type;
+            this.time = data.blockData.time;
+            this.nonce = data.blockData.nonce;
+            this.body = Buffer.from(JSON.stringify(data.blockData.body).toString());
+            this.prevBlockHash = data.blockData.prevBlockHash;
+        } else {
+            this.hash = '';
+            this.height = 0;
+            this.type = data.type;
+            this.time = '';
+            this.nonce = 0;
+            this.body = Buffer.from(JSON.stringify(data.body).toString());
+            this.prevBlockHash = '';
+        }
     }
 
     /**
@@ -38,6 +48,14 @@ class Block {
         block.prevBlockHash = prevHash;
 
         return block;
+    }
+
+    /**
+     * Static Class Methods
+     */
+
+    static rebuildBlock(blockData) {
+        return new this({ isRebuild: true, blockData });
     }
 
     /**
@@ -80,6 +98,12 @@ class Block {
     /**
      * Class Methods
      */
+
+    decryptBody() {
+        const { body } = this;
+        const decryptedBody = body.toString();
+        this.body = JSON.parse(decryptedBody);
+    }
 
     toString() {
         const { hash, height, type, time, nonce, body, prevBlockHash } = this;

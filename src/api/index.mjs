@@ -1,9 +1,25 @@
 import express from 'express';
+import morgan from 'morgan';
 
+// Controllers
+import blockController from './src/controllers/blockController.mjs';
+import blockchainController from './src/controllers/blockchainController.mjs';
+
+// Server
 const app = express();
 
-app.get('/', function (req, res) {
-    res.send('Hello World from express');
-});
+// Server Settings
+app.set('port', process.env.PORT || 8080);
 
-app.listen(8080);
+// Server Middlewares
+app.use(morgan('dev')); // 'dev' Is the bash window text format.
+app.use(express.json()); // To understand Json format.
+
+// Controllers API Routes
+app.use('/api/block', blockController);
+app.use('/api/blockchain', blockchainController);
+
+//Server Start
+app.listen(app.get('port'), () => {
+    console.log(`Server on port: ${app.get('port')}`);
+});
