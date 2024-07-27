@@ -2,8 +2,8 @@ import express from 'express';
 import morgan from 'morgan';
 
 // Controllers
-import blockController from './src/controllers/blockController.mjs';
-import blockchainController from './src/controllers/blockchainController.mjs';
+import blockController from './src/controllers/block.controller.mjs/index.js';
+import blockchainController from './src/controllers/blockchain.controller.mjs/index.js';
 
 // Server
 const app = express();

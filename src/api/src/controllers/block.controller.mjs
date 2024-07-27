@@ -1,4 +1,5 @@
 import express from 'express';
+import BLOCK_ROUTES from '../routes/block.routes.mjs';
 
 const blockRouter = express.Router();
 
@@ -7,7 +8,7 @@ const blockRouter = express.Router();
  */
 
 // Hello World
-blockRouter.get('/', (req, res) => {
+blockRouter.get(BLOCK_ROUTES.root, (req, res) => {
     res.json('Hello world from Block controller');
 });
 
