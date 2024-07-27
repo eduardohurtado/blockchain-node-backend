@@ -1,6 +1,7 @@
 import express from 'express';
 import Blockchain from '../models/blockchain.mjs';
 import ENUMS from '../enums/enums.mjs';
+import BLOCKCHAIN_ROUTES from '../routes/blockchain.routes.mjs';
 
 const blockchainRouter = express.Router();
 
@@ -9,12 +10,12 @@ const blockchainRouter = express.Router();
  */
 
 // Hello World
-blockchainRouter.get('/', async (req, res) => {
+blockchainRouter.get(BLOCKCHAIN_ROUTES.root, async (req, res) => {
     res.json('Hello world from Blockchain controller');
 });
 
 // Creates a New Blockchain
-blockchainRouter.get('/init', async (req, res) => {
+blockchainRouter.get(BLOCKCHAIN_ROUTES.initBlockchain, async (req, res) => {
     const blockchain = new Blockchain();
     await blockchain.init();
     blockchain.decryptBlocksBody();
@@ -22,7 +23,7 @@ blockchainRouter.get('/init', async (req, res) => {
 });
 
 // Mine a New Block
-blockchainRouter.post('/mine', async (req, res) => {
+blockchainRouter.post(BLOCKCHAIN_ROUTES.mineNewBlock, async (req, res) => {
     const { blockChain, body } = req.body;
     const rebuildedBlockchain = Blockchain.rebuild(blockChain);
     await rebuildedBlockchain.mineBlock({ type: ENUMS.block.type.regular, body });
