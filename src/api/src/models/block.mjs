@@ -1,6 +1,5 @@
 import SHA256 from 'crypto-js/sha256.js';
 import ENUMS from '../enums/enums.mjs';
-import LANG from '../lang/index.mjs';
 
 class Block {
     constructor(data) {
@@ -84,14 +83,10 @@ class Block {
         const self = this;
 
         return new Promise((resolve) => {
-            try {
-                const encodedData = self.body;
-                const decodedData = encodedData.toString();
-                const bodyData = JSON.parse(decodedData);
-                resolve(bodyData);
-            } catch (error) {
-                throw new Error(`${LANG.english.errors.errorOnGetBlockData}, Hash: ${self.hash}, Error: ${error}`);
-            }
+            const encodedData = self.body;
+            const decodedData = encodedData.toString();
+            const bodyData = JSON.parse(decodedData);
+            resolve(bodyData);
         });
     }
 
