@@ -13,6 +13,8 @@ const english = {
         finalizedPrint: 'Print finalized'
     },
     errors: {
+        apiError: 'Errorn on API',
+        description: 'Description',
         invalidChain: 'The chain is not valid',
         invalidBlock: 'The block is not valid',
         errorOnGetBlockData: 'Cannot get the block data',

@@ -16,14 +16,15 @@ blockRouter.get(BLOCK_ROUTES.root, (req, res) => {
 
 // Validates a Block
 blockRouter.post(BLOCK_ROUTES.validate, async (req, res) => {
-    const { block } = req.body;
-
     try {
+        const { block } = req.body;
         const rebuildedBlock = Block.rebuildBlock(block);
         const isValid = await rebuildedBlock.validate(block.prevBlockHash);
         res.json({ isValid });
     } catch (error) {
-        throw new Error(`${LANG.english.errors.errorOnGetBlockData}, Hash: ${block.hash}, Description: ${error}`);
+        throw new Error(
+            `${LANG.english.errors.apiError}: ${req.originalUrl}, ${LANG.english.errors.description}: ${error}`
+        );
     }
 });
 
