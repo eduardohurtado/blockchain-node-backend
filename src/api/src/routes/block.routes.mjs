@@ -1,5 +1,6 @@
 const BLOCK_ROUTES = Object.freeze({
-    root: '/'
+    root: '/',
+    validate: '/validate'
 });
 
 export default BLOCK_ROUTES;
