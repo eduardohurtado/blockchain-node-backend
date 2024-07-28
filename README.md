@@ -4,15 +4,19 @@ This project was created as an incursion to the Blockchain world and technologie
 
 ![React Node Banner](https://res.cloudinary.com/practicaldev/image/fetch/s--Qhu3PUis--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/y63ie8bmktwik5w3mhlg.png)
 
+![Blockchain Banner](https://st4.depositphotos.com/16552764/20957/v/450/depositphotos_209572350-stock-illustration-block-chain-logo-illustration-block.jpg)
+
 ## App requirements
 
 You need to have installed [Node Js](https://nodejs.org/en/) on your system to run the development server, the minimun supported version is the `V18.20.4`.
 
-For a better debuggin is recommended to have installed [Nodemon](https://www.npmjs.com/package/nodemon) and launch the local Node server in the directory "src/api" with the command `nodemon index.mjs`.
+For a better debuggin is recommended to have installed [Nodemon](https://www.npmjs.com/package/nodemon) globally and launch the local Node server in the directory "src/api" with the command `nodemon index.mjs`.
 
-## Install the project
+## Install and configure the project
 
 Run `npm install` to download all the app dependencies.
+
+Run `npm run gulp` to run the gulp pipeline to prepare the app for server launch.
 
 ## Available Scripts
 
