@@ -13,7 +13,7 @@ app.set('port', process.env.PORT || 8080);
 
 // Server Middlewares
 app.use(morgan('dev')); // 'dev' Is the bash window text format.
-app.use(express.json()); // To understand Json format.
+app.use(express.json()); // To understand JSON format.
 
 // Controllers API Routes
 app.use('/api/block', blockController);

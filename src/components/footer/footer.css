@@ -1,0 +1,7 @@
+.footer-body {
+    height: 5rem;
+    background: darkorange;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
