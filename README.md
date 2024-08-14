@@ -4,7 +4,13 @@ This project was created as an incursion to the Blockchain world and technologie
 
 ![React Node Banner](https://res.cloudinary.com/practicaldev/image/fetch/s--Qhu3PUis--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/y63ie8bmktwik5w3mhlg.png)
 
+## Yeah but, what is a Blockchain?
+
+A blockchain is a distributed ledger with growing lists of records (blocks) that are securely linked together via cryptographic hashes. Each block contains a cryptographic hash of the previous block, a timestamp, and transaction data (generally represented as a Merkle tree, where data nodes are represented by leaves). Since each block contains information about the previous block, they effectively form a chain (compare linked list data structure), with each additional block linking to the ones before it.
+
 ![Blockchain Banner](https://st4.depositphotos.com/16552764/20957/v/450/depositphotos_209572350-stock-illustration-block-chain-logo-illustration-block.jpg)
+
+Consequently, blockchain transactions are irreversible in that, once they are recorded, the data in any given block cannot be altered retroactively without altering all subsequent blocks.
 
 ## App requirements
 
