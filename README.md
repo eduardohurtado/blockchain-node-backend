@@ -24,6 +24,10 @@ Run `npm install` to download all the app dependencies.
 
 Run `npm run gulp` to run the gulp pipeline to prepare the app for server launch.
 
+## Test the Blockchain Node API yourself
+
+To test the Blockchain Node API functionality, please go to the project's path `blockchain-react-node\src\api\src\tests` and execute the following script `node tests.mjs` and you should see a just generated Blockchain in the command prompt.
+
 ## Available Scripts
 
 In the project directory, you can run:

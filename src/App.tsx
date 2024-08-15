@@ -9,15 +9,17 @@ import './App.css';
 
 const App = (): JSX.Element => {
     return (
-        <Container>
-            <Navbar />
+        <div className='app-container'>
+            <Container>
+                <Navbar />
 
-            <div className="separator"></div>
+                <div className='separator'></div>
 
-            <RouterProvider router={router} />
+                <RouterProvider router={router} />
 
-            <Footer />
-        </Container>
+                <Footer />
+            </Container>
+        </div>
     );
 };
 
