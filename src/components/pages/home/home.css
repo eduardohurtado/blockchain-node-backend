@@ -1,4 +1,7 @@
 .home-body {
-    height: 70rem;
-    background: red;
+    height: min-content;
+    padding: 3rem 1rem 20rem 1rem;
+    box-shadow: black;
+    background: whitesmoke;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
