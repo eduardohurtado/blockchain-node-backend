@@ -1,1 +1,5 @@
-export const ENG = {};
+import { ENG } from './en';
+
+export const LANGUAGE = {
+    ENG
+};

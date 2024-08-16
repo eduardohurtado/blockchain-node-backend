@@ -20,6 +20,10 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@emotion/react": "^11.13.0",
+    "@emotion/styled": "^11.13.0",
+    "@mui/icons-material": "^5.16.7",
+    "@mui/material": "^5.16.7",
     "@types/gulp": "^4.0.17",
     "@types/gulp-run": "^1.7.4",
     "bootstrap": "^5.3.3",
