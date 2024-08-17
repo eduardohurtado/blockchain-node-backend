@@ -8,7 +8,7 @@ export const ENG = {
         operations: {
             header: {
                 title: 'Blockchain operations',
-                description: 'Select an Blockchain network, and begin operating with'
+                description: 'Select an Blockchain network to operate with'
             },
             blockchainHistory: {
                 title: 'Blockchain transaction history'
