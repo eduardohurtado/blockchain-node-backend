@@ -7,14 +7,7 @@ import './navbar.css';
 
 const Navbar = () => {
     return (
-        <BNavbar
-            bg='dark'
-            data-bs-theme='dark'
-            expand='lg'
-            className='bg-body-tertiary navbar-container'
-            fixed='top'
-            collapseOnSelect={true}
-        >
+        <BNavbar expand='lg' className='bg-body-tertiary navbar-container' fixed='top' collapseOnSelect={true}>
             <Container>
                 <BNavbar.Brand>Blockchain React Node</BNavbar.Brand>
 

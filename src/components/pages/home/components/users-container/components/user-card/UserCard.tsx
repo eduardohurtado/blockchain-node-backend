@@ -9,11 +9,32 @@ import Collapse from '@mui/material/Collapse';
 import Avatar from '@mui/material/Avatar';
 import IconButton, { IconButtonProps } from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import { grey } from '@mui/material/colors';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
-import { ExpandMore as ExpandMoreIcon, MoreVert } from '@mui/icons-material';
-import userImage from 'src/assets/img/user-avatar.png';
+import { deepPurple } from '@mui/material/colors';
+import {
+    Payments,
+    Wallet,
+    Lock,
+    MoreVert,
+    Add,
+    ExpandMore as ExpandMoreIcon,
+    Favorite as FavoriteIcon,
+    Share as ShareIcon
+} from '@mui/icons-material';
+import {
+    Accordion,
+    AccordionActions,
+    AccordionDetails,
+    AccordionSummary,
+    Button,
+    Chip,
+    Divider,
+    ListItemIcon,
+    ListItemText,
+    Menu,
+    MenuItem,
+    Stack
+} from '@mui/material';
+import SeparatorRem from 'src/components/shared/SeparatorRem';
 
 interface ExpandMoreProps extends IconButtonProps {
     expand: boolean;
@@ -30,8 +51,27 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
     })
 }));
 
-const UserCard = () => {
-    const [expanded, setExpanded] = React.useState(false);
+const UserCard = ({
+    cardPhoto,
+    cardName,
+    cardBirthday,
+    cardDescription
+}: {
+    cardPhoto: string;
+    cardName: string;
+    cardBirthday: string;
+    cardDescription: string;
+}) => {
+    const [expanded, setExpanded] = React.useState(true);
+    const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+    const open = Boolean(anchorEl);
+
+    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+        setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
 
     const handleExpandClick = () => {
         setExpanded(!expanded);
@@ -41,23 +81,51 @@ const UserCard = () => {
         <Card>
             <CardHeader
                 avatar={
-                    <Avatar sx={{ bgcolor: grey[500] }} aria-label='recipe'>
-                        R
+                    <Avatar sx={{ bgcolor: deepPurple['500'] }} aria-label='recipe'>
+                        {cardName[0]}
                     </Avatar>
                 }
                 action={
-                    <IconButton aria-label='settings'>
-                        <MoreVert />
-                    </IconButton>
+                    <div>
+                        <IconButton aria-label='settings'></IconButton>
+
+                        <Button
+                            id='basic-button'
+                            aria-controls={open ? 'basic-menu' : undefined}
+                            aria-haspopup='true'
+                            aria-expanded={open ? 'true' : undefined}
+                            color='info'
+                            onClick={handleClick}
+                        >
+                            <MoreVert />
+                        </Button>
+                        <Menu
+                            id='basic-menu'
+                            anchorEl={anchorEl}
+                            open={open}
+                            onClose={handleClose}
+                            MenuListProps={{
+                                'aria-labelledby': 'basic-button'
+                            }}
+                        >
+                            <MenuItem>Profile</MenuItem>
+
+                            <MenuItem>
+                                <ListItemIcon>
+                                    <Lock fontSize='small' color='error' />
+                                </ListItemIcon>
+                                <ListItemText>Lock user</ListItemText>
+                            </MenuItem>
+                        </Menu>
+                    </div>
                 }
-                title='Shrimp and Chorizo Paella'
-                subheader='September 14, 2016'
+                title={cardName}
+                subheader={cardBirthday}
             />
-            <CardMedia component='img' height='194' image={userImage} alt='Paella dish' />
+            <CardMedia component='img' height='194' image={cardPhoto} alt='Paella dish' />
             <CardContent>
                 <Typography variant='body2' color='text.secondary'>
-                    This impressive paella is a perfect party dish and a fun meal to cook together with your guests. Add
-                    1 cup of frozen peas along with the mussels, if you like.
+                    {cardDescription}
                 </Typography>
             </CardContent>
             <CardActions disableSpacing>
@@ -69,6 +137,9 @@ const UserCard = () => {
                 </IconButton>
                 <ExpandMore
                     expand={expanded}
+                    name='name'
+                    title='More info'
+                    prefix='prefix'
                     onClick={handleExpandClick}
                     aria-expanded={expanded}
                     aria-label='show more'
@@ -78,18 +149,175 @@ const UserCard = () => {
             </CardActions>
             <Collapse in={expanded} timeout='auto' unmountOnExit>
                 <CardContent>
-                    <Typography paragraph>Method:</Typography>
-                    <Typography paragraph>
-                        Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10 minutes.
-                    </Typography>
-                    <Typography paragraph>
-                        Heat oil in a (14- to 16-inch) paella pan or a large, deep skillet over medium-high heat. Add
-                        chicken, shrimp and chorizo, and cook, stirring occasionally until lightly browned, 6 to 8
-                        minutes. Transfer shrimp to a large plate and set aside, leaving chicken and chorizo in the pan.
-                        Add pimentón, bay leaves, garlic, tomatoes, onion, salt and pepper, and cook, stirring often
-                        until thickened and fragrant, about 10 minutes. Add saffron broth and remaining 4 1/2 cups
-                        chicken broth; bring to a boil.
-                    </Typography>
+                    <Accordion>
+                        <AccordionSummary
+                            expandIcon={<ExpandMoreIcon />}
+                            aria-controls='panel1-content'
+                            id='panel1-header'
+                        >
+                            <Stack direction='row' width='100%'>
+                                <Typography variant='body2' display='flex' flexDirection='row' color='text.secondary'>
+                                    <Wallet fontSize='small' color='primary' />
+                                    &nbsp;Bitcoin&nbsp;wallet
+                                </Typography>
+                            </Stack>
+
+                            <Stack direction='row' width='100%' justifyContent='end'>
+                                <Chip size='small' label='on' color='success' />
+                            </Stack>
+                        </AccordionSummary>
+                        <AccordionDetails>
+                            <Divider textAlign='left'>
+                                <Typography variant='body2' fontWeight='500' color='text.secondary'>
+                                    Founds
+                                </Typography>
+                            </Divider>
+
+                            <SeparatorRem quantity={0.5} />
+
+                            <Typography
+                                variant='body1'
+                                fontSize='14px'
+                                width='100%'
+                                textAlign='end'
+                                color='text.secondary'
+                            >
+                                12.3 BTC
+                            </Typography>
+
+                            <Divider textAlign='left'>
+                                <Typography variant='body2' fontWeight='500' color='text.secondary'>
+                                    Last transaction
+                                </Typography>
+                            </Divider>
+
+                            <SeparatorRem quantity={0.5} />
+
+                            <Typography
+                                variant='body1'
+                                display='flex'
+                                justifyContent='flex-end'
+                                fontSize='14px'
+                                width='100%'
+                                color='text.secondary'
+                            >
+                                <span style={{ fontWeight: '500' }}>Hash:&nbsp;</span> ...0ad20fd1eef7bd04
+                            </Typography>
+
+                            <Typography
+                                variant='body1'
+                                display='flex'
+                                justifyContent='flex-end'
+                                fontSize='14px'
+                                width='100%'
+                                color='text.secondary'
+                            >
+                                <span style={{ fontWeight: '500' }}>Amount:&nbsp;</span> <Add color='success' /> 1.7 BTC
+                            </Typography>
+
+                            <Typography
+                                variant='body1'
+                                display='flex'
+                                justifyContent='flex-end'
+                                fontSize='14px'
+                                width='100%'
+                                color='text.secondary'
+                            >
+                                <span style={{ fontWeight: '500' }}>Date:&nbsp;</span> 18/01/2024
+                            </Typography>
+                        </AccordionDetails>
+
+                        <AccordionActions>
+                            <Button>
+                                <Payments fontSize='small' color='success' />
+                                &nbsp;Add founds
+                            </Button>
+                        </AccordionActions>
+                    </Accordion>
+
+                    <Accordion>
+                        <AccordionSummary
+                            expandIcon={<ExpandMoreIcon />}
+                            aria-controls='panel2-content'
+                            id='panel2-header'
+                        >
+                            <Stack direction='row' width='100%'>
+                                <Typography variant='body2' display='flex' color='text.secondary'>
+                                    <Wallet fontSize='small' color='primary' />
+                                    &nbsp;Ethereum&nbsp;wallet
+                                </Typography>
+                            </Stack>
+
+                            <Stack direction='row' width='100%' justifyContent='end'>
+                                <Chip size='small' label='off' color='error' />
+                            </Stack>
+                        </AccordionSummary>
+
+                        <AccordionDetails>
+                            <Divider textAlign='left'>
+                                <Typography variant='body2' fontWeight='500' color='text.secondary'>
+                                    Founds
+                                </Typography>
+                            </Divider>
+
+                            <SeparatorRem quantity={0.5} />
+
+                            <Typography
+                                variant='body1'
+                                fontSize='14px'
+                                width='100%'
+                                textAlign='end'
+                                color='text.secondary'
+                            >
+                                12.3 BTC
+                            </Typography>
+
+                            <Divider textAlign='left'>
+                                <Typography variant='body2' fontWeight='500' color='text.secondary'>
+                                    Last transaction
+                                </Typography>
+                            </Divider>
+
+                            <SeparatorRem quantity={0.5} />
+
+                            <Typography
+                                variant='body1'
+                                fontSize='14px'
+                                width='100%'
+                                textAlign='end'
+                                color='text.secondary'
+                            >
+                                <span style={{ fontWeight: '500' }}>Hash:&nbsp;</span> ...0ad20fd1eef7bd04
+                            </Typography>
+
+                            <Typography
+                                variant='body1'
+                                fontSize='14px'
+                                width='100%'
+                                textAlign='end'
+                                color='text.secondary'
+                            >
+                                <span style={{ fontWeight: '500' }}>Amount:&nbsp;</span> <Add color='success' /> 3.4 Eth
+                            </Typography>
+
+                            <Typography
+                                variant='body1'
+                                fontSize='14px'
+                                width='100%'
+                                textAlign='end'
+                                color='text.secondary'
+                            >
+                                <span style={{ fontWeight: '500' }}>Date:&nbsp;</span> 18/01/2024
+                            </Typography>
+                        </AccordionDetails>
+
+                        <AccordionActions>
+                            <Button>
+                                <Payments fontSize='small' color='success' />
+                                &nbsp;Add founds
+                            </Button>
+                        </AccordionActions>
+                    </Accordion>
                 </CardContent>
             </Collapse>
         </Card>
