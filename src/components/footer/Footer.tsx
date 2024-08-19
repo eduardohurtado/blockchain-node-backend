@@ -1,5 +1,6 @@
-// Styles
 import { SOCIAL_MEDIA } from 'src/assets/enums';
+
+// Component styles
 import './footer.css';
 
 const Footer = () => {

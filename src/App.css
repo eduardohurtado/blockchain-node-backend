@@ -2,11 +2,6 @@ body {
     font-family: 'Roboto', monospace;
 }
 
-.separator {
-    height: 70px;
-}
-
 .app-container {
     width: 100%;
-    background-color: rgba(251, 251, 251, 0.15);
 }
