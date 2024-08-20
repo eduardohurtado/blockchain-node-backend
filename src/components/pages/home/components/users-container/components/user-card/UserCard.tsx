@@ -15,6 +15,9 @@ import WalletAccordion from './components/WalletAccordion/WalletAccordion';
 import UserActionMenu from './components/UserActionMenu/UserActionMenu';
 import { ExpandMore as ExpandMoreIcon, Favorite as FavoriteIcon, Share as ShareIcon } from '@mui/icons-material';
 
+// Component styles
+import './user-card.css';
+
 interface ExpandMoreProps extends IconButtonProps {
     expand: boolean;
 }
@@ -48,7 +51,7 @@ const UserCard = ({
     };
 
     return (
-        <Card>
+        <Card className='card-container'>
             <CardHeader
                 avatar={
                     <Avatar sx={{ bgcolor: deepPurple['500'] }} aria-label='recipe'>
