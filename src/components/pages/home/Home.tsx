@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import Container from 'react-bootstrap/Container';
 import UsersContainer from './components/users-container/UsersContainer';
 import OperationsContainer from './components/operations-container/OperationsContainer';
 import ToolsBar from './components/tools-bar/ToolsBar';
@@ -13,13 +12,13 @@ const Home = () => {
     }, []);
 
     return (
-        <Container className='home-body'>
+        <div className='home-body'>
             <ToolsBar />
 
             <UsersContainer />
 
             <OperationsContainer />
-        </Container>
+        </div>
     );
 };
 
