@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import Container from 'react-bootstrap/Container';
+import { Container } from '@mui/material';
 
 // Styles
 import './about.css';
@@ -9,7 +9,7 @@ const About = () => {
         window.scrollTo(0, 0);
     }, []);
 
-    return <Container className="about-body">About body</Container>;
+    return <Container className='about-body'>About body</Container>;
 };
 
 export default About;
