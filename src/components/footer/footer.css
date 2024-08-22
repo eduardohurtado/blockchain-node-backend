@@ -1,3 +1,40 @@
 .footer-body {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
+.media-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.media-link {
+    font-size: 18px;
+    padding: 2rem;
+}
+
+.text-container {
+    text-align: justify;
+    padding-bottom: 2rem;
+}
+
+.links-container {
+    width: 100%;
+    padding: 0 1rem 0 1rem;
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+}
+
+.links-data {
+    padding: 1rem 2rem 2rem 2rem;
+}
+
+.copyright-container {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0 1rem 0;
+}

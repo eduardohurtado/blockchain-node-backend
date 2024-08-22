@@ -26,11 +26,9 @@
     "@mui/material": "^5.16.7",
     "@types/gulp": "^4.0.17",
     "@types/gulp-run": "^1.7.4",
-    "bootstrap": "^5.3.3",
     "dotenv": "^16.4.5",
     "gulp": "^5.0.0",
-    "gulp-run": "^1.7.1",
-    "react-bootstrap": "^2.10.4"
+    "gulp-run": "^1.7.1"
   },
   "scripts": {
     "gulp": "gulp",
