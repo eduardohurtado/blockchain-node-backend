@@ -2,7 +2,12 @@ import * as React from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
+import BitcoinNetwork from './bitcoin-network/BitcoinNetwork';
+import EthereumNetwork from './ethereum-network/EthereumNetwork';
 import { CurrencyBitcoin, Cloud } from '@mui/icons-material';
+
+// Component styles
+import './slider-wallet-select.css';
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -49,10 +54,14 @@ const SliderWalletSelect = () => {
                 </Tabs>
             </Box>
             <CustomTabPanel value={value} index={0}>
-                <div style={{ width: '100%', height: '10rem', backgroundColor: '#6c757d' }}>Bitcoin config page</div>
+                <div className='networks-container'>
+                    <BitcoinNetwork />
+                </div>
             </CustomTabPanel>
             <CustomTabPanel value={value} index={1}>
-                <div style={{ width: '100%', height: '10rem', backgroundColor: '#6c757d' }}>Ethereum config page</div>
+                <div className='networks-container'>
+                    <EthereumNetwork />
+                </div>
             </CustomTabPanel>
         </Box>
     );
