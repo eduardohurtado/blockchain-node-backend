@@ -33,7 +33,7 @@ const Footer = () => {
 
                 <section>
                     <Container className='text-container'>
-                        <Typography variant='body2' color='text.primary' fontSize={14}>
+                        <Typography variant='body2' color='text.secondary' fontSize={14}>
                             {LANGUAGE.ENG.footer.label}
                         </Typography>
                     </Container>
@@ -41,7 +41,7 @@ const Footer = () => {
 
                 <section className='links-container'>
                     <div>
-                        <Typography variant='body2' color='text.primary' fontWeight={600}>
+                        <Typography variant='body2' color='text.primary' fontWeight={500}>
                             <span> {LANGUAGE.ENG.footer.links.docs.name}</span>
                         </Typography>
 
@@ -78,7 +78,7 @@ const Footer = () => {
                     </div>
 
                     <div>
-                        <Typography variant='body2' color='text.primary' fontWeight={600}>
+                        <Typography variant='body2' color='text.primary' fontWeight={500}>
                             <span>{LANGUAGE.ENG.footer.links.interest.name}</span>
                         </Typography>
 
