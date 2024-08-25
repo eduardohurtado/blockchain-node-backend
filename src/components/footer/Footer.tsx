@@ -3,6 +3,7 @@ import { Container, Typography } from '@mui/material';
 
 // Component styles
 import './footer.css';
+import { LANGUAGE } from 'src/assets/language';
 
 const Footer = () => {
     return (
@@ -32,45 +33,44 @@ const Footer = () => {
 
                 <section>
                     <Container className='text-container'>
-                        Est labore nisi est ad consequat in veniam laborum. Do nisi proident ullamco pariatur fugiat
-                        tempor elit ex esse ex do incididunt consectetur enim. Esse exercitation magna sunt do velit
-                        dolor dolor nulla nisi velit. Dolore mollit exercitation consectetur in. Tempor do ea nostrud
-                        reprehenderit commodo non deserunt reprehenderit.
+                        <Typography variant='body2' color='text.primary' fontSize={14}>
+                            {LANGUAGE.ENG.footer.label}
+                        </Typography>
                     </Container>
                 </section>
 
                 <section className='links-container'>
                     <div>
                         <Typography variant='body2' color='text.primary' fontWeight={600}>
-                            <span>Documentation</span>
+                            <span> {LANGUAGE.ENG.footer.links.docs.name}</span>
                         </Typography>
 
                         <ul className='links-data'>
                             <li>
                                 <Typography variant='body2' color='text.secondary'>
                                     <a href='https://react.dev/learn' target='blank'>
-                                        React
+                                        {LANGUAGE.ENG.footer.links.docs.react}
                                     </a>
                                 </Typography>
                             </li>
                             <li>
                                 <Typography variant='body2' color='text.secondary'>
                                     <a href='https://nodejs.org/docs/latest/api/' target='blank'>
-                                        NodeJS
+                                        {LANGUAGE.ENG.footer.links.docs.node}
                                     </a>
                                 </Typography>
                             </li>
                             <li>
                                 <Typography variant='body2' color='text.secondary'>
                                     <a href='https://mui.com/material-ui/getting-started/' target='blank'>
-                                        MUI Core
+                                        {LANGUAGE.ENG.footer.links.docs.muiCore}
                                     </a>
                                 </Typography>
                             </li>
                             <li>
                                 <Typography variant='body2' color='text.secondary'>
                                     <a href='https://www.npmjs.com/package/gulp' target='blank'>
-                                        Gulp
+                                        {LANGUAGE.ENG.footer.links.docs.gulp}
                                     </a>
                                 </Typography>
                             </li>
@@ -79,35 +79,35 @@ const Footer = () => {
 
                     <div>
                         <Typography variant='body2' color='text.primary' fontWeight={600}>
-                            <span>Interest links</span>
+                            <span>{LANGUAGE.ENG.footer.links.interest.name}</span>
                         </Typography>
 
                         <ul className='links-data'>
                             <li>
                                 <Typography variant='body2' color='text.secondary'>
                                     <a href='https://github.com/eduardohurtado' target='blank'>
-                                        GitHub
+                                        {LANGUAGE.ENG.footer.links.interest.github}
                                     </a>
                                 </Typography>
                             </li>
                             <li>
                                 <Typography variant='body2' color='text.secondary'>
                                     <a href='https://www.linkedin.com/in/eduardo-hurtado-g/' target='blank'>
-                                        LinkedIn
+                                        {LANGUAGE.ENG.footer.links.interest.linkedin}
                                     </a>
                                 </Typography>
                             </li>
                             <li>
                                 <Typography variant='body2' color='text.secondary'>
                                     <a href='https://compassionate-yalow-9ebf21.netlify.app/#/' target='blank'>
-                                        NetFlex React
+                                        {LANGUAGE.ENG.footer.links.interest.netflex}
                                     </a>
                                 </Typography>
                             </li>
                             <li>
                                 <Typography variant='body2' color='text.secondary'>
                                     <a href='https://create-react-app.dev/docs/getting-started' target='blank'>
-                                        CRA
+                                        {LANGUAGE.ENG.footer.links.interest.cra}
                                     </a>
                                 </Typography>
                             </li>
