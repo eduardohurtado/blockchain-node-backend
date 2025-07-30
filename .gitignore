@@ -10,6 +10,7 @@ api/.pnp
 
 # production
 /build
+/api/dist
 
 # misc
 .DS_Store

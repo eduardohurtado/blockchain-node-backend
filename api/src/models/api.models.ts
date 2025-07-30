@@ -1,10 +1,10 @@
-import { LANG } from '../enums/enums';
+import { API_LANG } from '../enums/enums';
 
 export interface IAPIVersionModel {
     id: string;
     name: string;
     description: string;
     version: string;
-    currentLang: LANG.english | LANG.spanish;
+    currentLang: API_LANG.english | API_LANG.spanish;
     basePath: string;
 }

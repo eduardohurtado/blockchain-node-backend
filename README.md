@@ -1,8 +1,8 @@
-# Blockchain Full Stack App React + Node
+# Blockchain App Node + Express
 
 This project was created as an incursion to the Blockchain world and technologies.
 
-![React Node Banner](https://res.cloudinary.com/practicaldev/image/fetch/s--Qhu3PUis--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/y63ie8bmktwik5w3mhlg.png)
+![TS Express Node Banner](https://live.staticflickr.com/65535/52702210344_fe78a142e7_o.png)
 
 ## Yeah but, what is a Blockchain?
 
@@ -22,23 +22,18 @@ For a better debuggin is recommended to have installed [Nodemon](https://www.npm
 
 Run `npm install` to download all the app dependencies.
 
-Run `npm run gulp` to run the gulp pipeline to prepare the app for server launch.
-
 ## Test the Blockchain Node API yourself
 
-To test the Blockchain Node API functionality, please go to the project's path `blockchain-react-node\src\api\src\tests` and execute the following script `node tests.mjs` and you should see a just generated Blockchain in the command prompt.
+To test the Blockchain Node API functionality, please go to the project's path `blockchain-node-backend\api\src\tests` and execute the following script `node tests.mjs` and you should see a just generated Blockchain in the command prompt.
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `npm start`
+### `npm run dev`
 
 Runs the app in the development mode.\
-Open [http://localhost:8080](http://localhost:8080) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Open [http://localhost:8080/api/blockchain/](http://localhost:8080/api/blockchain/) to view the greet response in the browser.
 
 ### `npm test`
 
@@ -57,6 +52,6 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+You can learn more in the [Node JS documentation](https://nodejs.org/docs/latest/api/).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+To learn Express, check out the [Express documentation](https://expressjs.com/en/starter/installing.html).
