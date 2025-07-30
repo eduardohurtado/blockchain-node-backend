@@ -16,7 +16,7 @@ Consequently, blockchain transactions are irreversible in that, once they are re
 
 You need to have installed [Node Js](https://nodejs.org/en/) on your system to run the development server, the minimun supported version is the `V18.20.4`.
 
-For a better debuggin is recommended to have installed [Nodemon](https://www.npmjs.com/package/nodemon) globally and launch the local Node server in the directory "src/api" with the command `nodemon index.mjs`.
+For a better debuggin is recommended to have installed [Nodemon](https://www.npmjs.com/package/nodemon) globally and launch the local Node server in the directory "/api" with the command `nodemon server.ts`.
 
 ## Install and configure the project
 
@@ -24,7 +24,7 @@ Run `npm install` to download all the app dependencies.
 
 ## Test the Blockchain Node API yourself
 
-To test the Blockchain Node API functionality, please go to the project's path `blockchain-node-backend\api\src\tests` and execute the following script `node tests.mjs` and you should see a just generated Blockchain in the command prompt.
+To test the Blockchain Node API functionality, please execute the following script `npm run test` and you should see a just generated Blockchain in the command prompt.
 
 ## Available Scripts
 
@@ -33,7 +33,7 @@ In the project directory, you can run:
 ### `npm run dev`
 
 Runs the app in the development mode.\
-Open [http://localhost:8080/api/blockchain/](http://localhost:8080/api/blockchain/) to view the greet response in the browser.
+Open [http://localhost:8080/api/blockchain/](http://localhost:8080/api/blockchain/) to see the greet response in the browser.
 
 ### `npm run build`
 
