@@ -8,7 +8,7 @@ This project was created as an incursion to the Blockchain world and technologie
 
 A blockchain is a distributed ledger with growing lists of records (blocks) that are securely linked together via cryptographic hashes. Each block contains a cryptographic hash of the previous block, a timestamp, and transaction data (generally represented as a Merkle tree, where data nodes are represented by leaves). Since each block contains information about the previous block, they effectively form a chain (compare linked list data structure), with each additional block linking to the ones before it.
 
-![Blockchain Banner](https://st4.depositphotos.com/16552764/20957/v/450/depositphotos_209572350-stock-illustration-block-chain-logo-illustration-block.jpg)
+![Blockchain Banner](https://www.advancedsecure.co.uk/app/uploads/2021/03/Blockchain-Paper-Secure-Content-Image.jpg)
 
 Consequently, blockchain transactions are irreversible in that, once they are recorded, the data in any given block cannot be altered retroactively without altering all subsequent blocks.
 
@@ -35,20 +35,11 @@ In the project directory, you can run:
 Runs the app in the development mode.\
 Open [http://localhost:8080/api/blockchain/](http://localhost:8080/api/blockchain/) to view the greet response in the browser.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
+Builds the app for production to the `/api/dist` folder.\
+It correctly bundles Express in production mode and optimizes the build for the best performance.
 Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
 ## Learn More
 
