@@ -30,8 +30,6 @@ class Blockchain {
         return new Promise(async (resolve) => {
             let chainErrors: Error[] = [];
 
-            console.log('on #addBlock');
-
             if (self.chain.length > 0) {
                 chainErrors = await self.validateChain();
             }
@@ -51,7 +49,7 @@ class Blockchain {
      * Async class methods
      */
 
-    async init() {
+    async init(): Promise<void> {
         if (this.height === -1) {
             const genesysBlock = await Block.mine('', BLOCK_TYPE.genesys, BLOCK_TYPE.genesys);
             await this.#addBlock(genesysBlock);
@@ -62,7 +60,7 @@ class Blockchain {
         }
     }
 
-    async mineBlock(dataToMine: { type: BLOCK_TYPE.regular | BLOCK_TYPE.genesys; body: string }) {
+    async mineBlock(dataToMine: { type: BLOCK_TYPE.regular | BLOCK_TYPE.genesys; body: string }): Promise<void> {
         if (this.height === -1) {
             throw new Error(`${APP_LANG.english.errors.chainIsNotInitialized}`);
         } else if (dataToMine.type === BLOCK_TYPE.genesys) {
@@ -134,7 +132,7 @@ class Blockchain {
      * Class methods
      */
 
-    decryptBlocksBody() {
+    decryptBlocksBody(): void {
         const decryptedBlocks = [];
 
         for (const block of this.chain) {
@@ -145,7 +143,7 @@ class Blockchain {
         this.chain = decryptedBlocks;
     }
 
-    printChain() {
+    printChain(): void {
         const self = this;
 
         for (const block of self.chain) {
