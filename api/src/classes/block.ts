@@ -1,9 +1,23 @@
-import SHA256 from 'crypto-js/sha256.js';
-import ENUMS from '../enums/enums.mjs';
+import SHA256 from 'crypto-js/sha256';
+import { BLOCK_DIFFICULTY, BLOCK_TYPE } from '../enums/enums';
+import { IBlockModel, IBlockBuildModel } from '../models/block.models';
+import APP_LANG from '../lang';
 
 class Block {
-    constructor(data) {
-        if (data?.isRebuild) {
+    hash: string;
+    height: number;
+    type: BLOCK_TYPE.genesys | BLOCK_TYPE.regular;
+    time: string;
+    nonce: number;
+    body: Buffer<ArrayBuffer>;
+    prevBlockHash: string;
+
+    /**
+     * Constructor
+     * @param {Object} data - Block data
+     */
+    constructor(data: { isRebuild?: boolean; blockData?: IBlockModel; blockBuildData?: IBlockBuildModel }) {
+        if (data?.isRebuild && data?.blockData) {
             this.hash = data.blockData.hash;
             this.height = data.blockData.height;
             this.type = data.blockData.type;
@@ -11,14 +25,16 @@ class Block {
             this.nonce = data.blockData.nonce;
             this.body = Buffer.from(JSON.stringify(data.blockData.body).toString());
             this.prevBlockHash = data.blockData.prevBlockHash;
-        } else {
+        } else if (data?.blockBuildData) {
             this.hash = '';
             this.height = 0;
-            this.type = data.type;
+            this.type = data.blockBuildData.type;
             this.time = '';
             this.nonce = 0;
-            this.body = Buffer.from(JSON.stringify(data.body).toString());
+            this.body = Buffer.from(JSON.stringify(data.blockBuildData.body).toString());
             this.prevBlockHash = '';
+        } else {
+            throw new Error(`${APP_LANG.english.errors.invalidBlockConstructorParameters}`);
         }
     }
 
@@ -26,34 +42,43 @@ class Block {
      * Static Async Class Methods
      */
 
-    static async mine(prevHash, data) {
-        let hash = '';
-        let time = '';
-        let nonce = 0;
+    static async mine(
+        prevHash: string,
+        blockType: BLOCK_TYPE.genesys | BLOCK_TYPE.regular,
+        dataToMine: string
+    ): Promise<Block> {
+        try {
+            let hash = '';
+            let time = '';
+            let nonce = 0;
 
-        do {
-            time = new Date().getTime().toString();
-            nonce += 1;
-            hash = SHA256(prevHash + time + nonce + data.body).toString();
-        } while (
-            hash.substring(0, ENUMS.block.mine.difficulty.value) !== '0'.repeat(ENUMS.block.mine.difficulty.value)
-        );
+            do {
+                time = new Date().getTime().toString();
+                nonce += 1;
+                hash = SHA256(prevHash + time + nonce + dataToMine).toString();
+            } while (hash.substring(0, BLOCK_DIFFICULTY.value) !== '0'.repeat(BLOCK_DIFFICULTY.value));
 
-        const block = new this({ type: data.type, body: data.body });
+            const block = new this({
+                isRebuild: false,
+                blockBuildData: { type: blockType, body: dataToMine }
+            });
 
-        block.hash = hash;
-        block.time = time;
-        block.nonce = nonce;
-        block.prevBlockHash = prevHash;
+            block.hash = hash;
+            block.time = time;
+            block.nonce = nonce;
+            block.prevBlockHash = prevHash;
 
-        return block;
+            return block;
+        } catch (error) {
+            throw new Error(`${APP_LANG.english.errors.blockMineError}: ${error}`);
+        }
     }
 
     /**
      * Static Class Methods
      */
 
-    static rebuildBlock(blockData) {
+    static rebuildBlock(blockData: IBlockModel) {
         return new this({ isRebuild: true, blockData });
     }
 
@@ -61,7 +86,7 @@ class Block {
      * Async Class Methods
      */
 
-    async validate(prevHash) {
+    async validate(prevHash: string): Promise<boolean> {
         const self = this;
 
         return new Promise(async (resolve) => {
@@ -79,7 +104,7 @@ class Block {
         });
     }
 
-    async getBodyData() {
+    async getBodyData(): Promise<string> {
         const self = this;
 
         return new Promise((resolve) => {
